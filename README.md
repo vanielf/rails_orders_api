@@ -1,24 +1,18 @@
-# README
+# Rails Orders API
+---------------------------
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Additional Stuff
 
-Things you may want to cover:
+* A security layer can be added using gem devise to configure authentication of clients.
 
-* Ruby version
+* A permission layer can be added using gem pundit to configure Role-Based Access Control (RBAC) of user authenticated.
 
-* System dependencies
+* A action to update some properties of a order was implemented.
 
-* Configuration
+* A web UI to control everything directly can be added by generating views for the models and using them in their respective controllers.
 
-* Database creation
 
-* Database initialization
+## Documentation:
 
-* How to run the test suite
+* https://documenter.getpostman.com/view/8250851/T17AkWzt?version=latest
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
