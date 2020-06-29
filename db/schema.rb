@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2020_06_28_185112) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "btree_gin"
@@ -35,5 +35,29 @@ ActiveRecord::Schema.define(version: 0) do
   enable_extension "unaccent"
   enable_extension "uuid-ossp"
   enable_extension "xml2"
+
+  create_table "batches", force: :cascade do |t|
+    t.string "reference"
+    t.string "purchase_channel"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["reference"], name: "index_batches_on_reference", unique: true
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "reference"
+    t.string "purchase_channel"
+    t.string "client_name"
+    t.text "address"
+    t.string "delivery_service"
+    t.decimal "total_value"
+    t.json "line_items", default: [], array: true
+    t.string "status"
+    t.bigint "batch_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["batch_id"], name: "index_orders_on_batch_id"
+    t.index ["reference"], name: "index_orders_on_reference", unique: true
+  end
 
 end
